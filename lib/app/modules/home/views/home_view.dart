@@ -19,13 +19,19 @@ class HomeView extends GetView<HomeController> {
         ),
       ),
 
+      floatingActionButton: FloatingActionButton(
+        onPressed: () => Get.toNamed('/add-transaction'),
+        backgroundColor: const Color(0xFF393E46),
+        child: const Icon(Icons.add_rounded, color: Color(0xFF00ADB5)),
+      ),
+
       bottomNavigationBar: Obx(
         () => Container(
           height: 60,
           width: double.infinity,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.vertical(top: Radius.circular(32)),
-            color: const Color(0xFF0F2A1D),
+            color: const Color(0xFF393E46),
           ),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -45,8 +51,8 @@ class HomeView extends GetView<HomeController> {
                   icon: Icon(
                     Icons.home_rounded,
                     color: controller.indexBottomNav.value == 0
-                        ? const Color(0xFFAEC3B0)
-                        : const Color(0xFF6B9071),
+                        ? const Color(0xFF00ADB5)
+                        : const Color.fromARGB(255, 0, 120, 126),
                   ),
                 ),
               ),
@@ -65,8 +71,8 @@ class HomeView extends GetView<HomeController> {
                   icon: Iconify(
                     Mdi.package,
                     color: controller.indexBottomNav.value == 1
-                        ? const Color(0xFFAEC3B0)
-                        : const Color(0xFF6B9071),
+                        ? const Color(0xFF00ADB5)
+                        : const Color.fromARGB(255, 0, 120, 126),
                   ),
                 ),
               ),
@@ -85,8 +91,8 @@ class HomeView extends GetView<HomeController> {
                   icon: Iconify(
                     Mdi.document,
                     color: controller.indexBottomNav.value == 2
-                        ? const Color(0xFFAEC3B0)
-                        : const Color(0xFF6B9071),
+                        ? const Color(0xFF00ADB5)
+                        : const Color.fromARGB(255, 0, 120, 126),
                   ),
                 ),
               ),
@@ -105,8 +111,8 @@ class HomeView extends GetView<HomeController> {
                   icon: Icon(
                     Icons.history_rounded,
                     color: controller.indexBottomNav.value == 3
-                        ? const Color(0xFFAEC3B0)
-                        : const Color(0xFF6B9071),
+                        ? const Color(0xFF00ADB5)
+                        : const Color.fromARGB(255, 0, 120, 126),
                   ),
                 ),
               ),
@@ -125,7 +131,16 @@ class Home extends GetView<HomeController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('Home App Bar')),
-      body: const Center(child: Text('Home')),
+      body: Column(
+        children: [
+          Obx(() => Text(controller.savedText.value)),
+          TextField(onChanged: (value) => controller.savedText.value = value),
+          TextButton(
+            onPressed: () => controller.saveText(),
+            child: const Text('Save Text'),
+          ),
+        ],
+      ),
     );
   }
 }

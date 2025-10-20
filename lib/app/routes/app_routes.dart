@@ -7,6 +7,7 @@ abstract class Routes {
   static const STOCK = _Paths.STOCK;
   static const HISTORY = _Paths.HISTORY;
   static const PRICE_LIST = _Paths.PRICE_LIST;
+  static const ADD_TRANSACTION = _Paths.ADD_TRANSACTION;
 }
 
 abstract class _Paths {
@@ -15,4 +16,5 @@ abstract class _Paths {
   static const STOCK = '/stock';
   static const HISTORY = '/history';
   static const PRICE_LIST = '/price-list';
+  static const ADD_TRANSACTION = '/add-transaction';
 }

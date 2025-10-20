@@ -1,5 +1,7 @@
 import 'package:get/get.dart';
 
+import '../modules/add-transaction/bindings/add_transaction_binding.dart';
+import '../modules/add-transaction/views/add_transaction_view.dart';
 import '../modules/history/bindings/history_binding.dart';
 import '../modules/history/views/history_view.dart';
 import '../modules/home/bindings/home_binding.dart';
@@ -36,6 +38,11 @@ class AppPages {
       name: _Paths.PRICE_LIST,
       page: () => const PriceListView(),
       binding: PriceListBinding(),
+    ),
+    GetPage(
+      name: _Paths.ADD_TRANSACTION,
+      page: () => const AddTransactionView(),
+      binding: AddTransactionBinding(),
     ),
   ];
 }
