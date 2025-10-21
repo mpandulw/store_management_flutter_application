@@ -131,15 +131,71 @@ class Home extends GetView<HomeController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('Home App Bar')),
-      body: Column(
-        children: [
-          Obx(() => Text(controller.savedText.value)),
-          TextField(onChanged: (value) => controller.savedText.value = value),
-          TextButton(
-            onPressed: () => controller.saveText(),
-            child: const Text('Save Text'),
-          ),
-        ],
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            // const SizedBox(height: 17.5),
+            Stack(
+              alignment: AlignmentGeometry.center,
+              clipBehavior: Clip.none,
+              children: [
+                Container(height: 70, color: const Color(0xFF393E46)),
+
+                Positioned(
+                  top: 5,
+                  left: 0,
+                  right: 0,
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                    child: Container(
+                      height: 125,
+                      decoration: BoxDecoration(
+                        color: const Color(0xFF3E5879),
+                        borderRadius: BorderRadius.all(Radius.circular(30)),
+                      ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          Column(
+                            children: [
+                              const Text(
+                                'Uang Tunai',
+                                style: TextStyle(
+                                  color: Color(0xFFFFFFFF),
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              Text(controller.cash.value.toString()),
+                            ],
+                          ),
+
+                          const VerticalDivider(
+                            color: Colors.grey,
+                            indent: 25,
+                            endIndent: 25,
+                          ),
+
+                          Column(
+                            children: [
+                              const Text(
+                                'Uang Tunai',
+                                style: TextStyle(
+                                  color: Color(0xFFFFFFFF),
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              Text(controller.cash.value.toString()),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }

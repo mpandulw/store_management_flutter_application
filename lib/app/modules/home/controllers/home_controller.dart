@@ -11,6 +11,9 @@ class HomeController extends GetxController {
   final savedText = ''.obs;
   final pages = <Widget>[Home(), StockView(), PriceListView(), HistoryView()];
 
+  final cash = 0.obs;
+  final bankAccount = 0.obs;
+
   late Box box;
 
   @override
